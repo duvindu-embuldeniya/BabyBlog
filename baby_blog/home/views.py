@@ -67,7 +67,7 @@ def delete_profile(request, username):
     object = User.objects.get(username=username)
     if request.method == 'POST':
         object.delete()
-        # messages.success(request, f"Account deleted successfully!")
+        messages.success(request, f"Account deleted successfully!")
         return redirect('home')
     else:
         return render(request, 'home/profile_delete.html', {'object': object})
@@ -78,7 +78,7 @@ def register(request):
         if form.is_valid():
             new_user = form.save()
             auth.login(request, new_user)
-            # messages.success(request, f"Your Account has been Created!")
+            messages.success(request, f"Your Account has been Created!")
             return redirect('profile')
     else:
         form = UserRegistrationForm()
@@ -89,18 +89,18 @@ class CustomLoginView(auth_views.LoginView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            # messages.info(request, "You are already logged in!")
+            messages.info(request, "You are already logged in!")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        # messages.success(self.request, "You have logged in successfully!")
+        messages.success(self.request, "You have logged in successfully!")
         return super().get_success_url()
     
 def logout(request):
     if not(request.user.is_authenticated):
-        # messages.info(request, f"You haven't logged in!")
+        messages.info(request, f"You haven't logged in!")
         return redirect('home')
     auth.logout(request)
     return render(request, 'home/logout.html')
@@ -113,7 +113,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            # messages.success(request, f"Profile updated successfully!")
+            messages.success(request, f"Profile updated successfully!")
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance = request.user)
