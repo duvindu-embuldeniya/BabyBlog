@@ -7,7 +7,7 @@ import os
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    image = models.ImageField(default = 'profile_pics/default.jpg', upload_to = 'profile_pics/', blank=True, null=True)
+    image = models.ImageField(default = 'profile_pics/default_profile_pic.jpg', upload_to = 'profile_pics/', blank=True, null=True)
     email = models.EmailField(null=True, blank=True)
 
     def __str__(self):
