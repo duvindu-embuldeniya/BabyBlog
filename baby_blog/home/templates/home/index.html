@@ -5,9 +5,9 @@
     {% for post in posts %}
     <article class="media content-section" style="display: flex; align-items: flex-start;">
         {% if post.author.profile.image %}
-          <img class="rounded-circle article-img mr-3" style="height: 80px; width: 70px;" src="{{ post.author.profile.image.url }}" alt="Profile Image" style="width: 70px; height: 70px;">
+        <img class="rounded-circle article-img mr-3" style="height: 80px; width: 70px;" src="{{ post.author.profile.image.url }}" alt="Profile Image" style="width: 70px; height: 70px;">
         {% else %}
-          <img class="rounded-circle article-img mr-3" style="height: 80px; width: 70px;" src="{% static 'default.jpg' %}" alt="Profile Image" style="width: 70px; height: 70px;">
+        <img class="rounded-circle article-img mr-3" style="height: 80px; width: 70px;" src="{% static 'images/default_pics/default.jpg' %}" alt="Profile Image" style="width: 70px; height: 70px;">
         {% endif %}
         <div class="media-body">
           <div class="article-metadata">
